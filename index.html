@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALABARTE</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+
+<section class="hero">
+    <div class="hero-overlay">
+
+        <!-- ===== TOP BAR ===== -->
+        <div class="hero-top">
+
+            <!-- LANG SWITCHER -->
+            <div class="lang-switcher">
+                <button type="button" class="lang-btn" data-lang="cs">CS</button>
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+            </div>
+
+            <!-- NAV -->
+            <nav class="hero-nav" id="heroNav">
+                <a href="#kontakt" data-key="kontakt">Kontakt</a>
+                <a href="#vina" data-key="vina">Vína</a>
+                <a href="#galerie" data-key="galerie">Galerie</a>
+                <a href="#eshop" data-key="eshop">E-shop</a>
+            </nav>
+
+        </div>
+
+        <!-- ===== TITLE ===== -->
+        <h1 class="hero-title" data-key="hero_title">ALABARTE</h1>
+
+        <!-- ===== SLIDES ===== -->
+        <div class="hero-slides">
+
+            <!-- IMAGES -->
+            <div class="slideshow image-stage">
+                <div class="image-slide active">
+                    <img src="Images/Vína/víno1.png" alt="">
+                </div>
+                <div class="image-slide next">
+                    <img src="Images/Vína/Víno2.png" alt="">
+                </div>
+                <div class="image-slide prev">
+                    <img src="Images/Vína/Víno%203.png" alt="">
+                </div>
+            </div>
+
+            <!-- TEXTS -->
+            <div class="slideshow text-stage">
+                <div class="text-slide active">
+                    <h2 data-key="text1_h2">První text</h2>
+                    <p data-key="text1_p">Synchronizovaný s prvním obrázkem</p>
+                </div>
+
+                <div class="text-slide">
+                    <h2 data-key="text2_h2">Druhý text</h2>
+                    <p data-key="text2_p">Synchronizovaný s druhým obrázkem</p>
+                </div>
+
+                <div class="text-slide">
+                    <h2 data-key="text3_h2">Třetí text</h2>
+                    <p data-key="text3_p">Synchronizovaný s třetím obrázkem</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
