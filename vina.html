@@ -1,10 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALABARTE – Vína</title>
+
+    <link rel="stylesheet" href="vina.css">
+    <script src="index.js" defer></script>
+    <script src="vina.js" defer></script>
 </head>
 <body>
+
+<section class="hero">
+    <div class="hero-overlay">
+
+        <!-- ===== TOP BAR ===== -->
+        <div class="hero-top">
+
+            <!-- LANG SWITCHER -->
+            <div class="lang-switcher">
+                <button type="button" class="lang-btn" data-lang="cs">CS</button>
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+            </div>
+
+            <!-- NAV (DŮLEŽITÉ: stejné id jako na indexu kvůli scrolled efektu) -->
+            <nav class="hero-nav" id="heroNav">
+                <a href="index.html" data-key="home">Domů</a>
+                <a href="#kontakt" data-key="kontakt">Kontakt</a>
+                <a href="#galerie" data-key="galerie">Galerie</a>
+                <a href="#eshop" data-key="eshop">E-shop</a>
+            </nav>
+
+        </div>
+
+        <!-- ===== TITLE ===== -->
+        <header class="vina-header">
+            <span class="vina-eyebrow" data-key="vina_eyebrow">Kolekce</span>
+
+            <img
+                    src="Images/Alabarte-logo.webp"
+                    alt="Alabarte"
+                    class="vina-logo"
+            >
+
+            <h1 class="vina-title" data-key="vina_title">
+                <span class="vina-title__small">Naše</span>
+                <span class="vina-title__big">vína</span>
+            </h1>
+
+        </header>
+
+
+
+        <!-- ===== CONTENT ===== -->
+        <div class="vina-content">
+            <p data-key="vina_text">
+                Nabízíme pečlivě vybraná vína z malých vinařství s důrazem na kvalitu,
+                tradici a jedinečný charakter každé lahve.
+            </p>
+        </div>
+
+        <!-- ===== VÍNA (prezentační katalog) ===== -->
+        <section class="wines" id="vina-katalog">
+
+            <article class="wine-card" data-wine="ryzlink" tabindex="0" role="button" aria-label="Detail vína Ryzlink rýnský">
+                <div class="wine-media">
+                    <img src="Images/Vína/víno1.png" alt="Ryzlink rýnský 2023">
+                </div>
+
+                <div class="wine-info">
+                    <div class="wine-topline">
+                        <h2 class="wine-name">Ryzlink rýnský</h2>
+                        <span class="wine-meta">2023 • Morava</span>
+                    </div>
+
+                    <p class="wine-story">
+                        Elegantní a minerální výraz s čistou kyselinou. Vůně citrusů, bílých květů a jemné kořenitosti.
+                        Víno staví na svěžesti a dlouhém závěru.
+                    </p>
+
+                    <ul class="wine-notes">
+                        <li><strong>Profil:</strong> svěží, minerální, citrus</li>
+                        <li><strong>Párování:</strong> ryby, lehké omáčky, kozí sýr</li>
+                        <li><strong>Servis:</strong> 8–10 °C</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="wine-card wine-card--reverse" data-wine="pinot" tabindex="0" role="button" aria-label="Detail vína Pinot Noir">
+                <div class="wine-media">
+                    <img src="Images/Vína/Víno2.png" alt="Pinot Noir 2022">
+                </div>
+
+                <div class="wine-info">
+                    <div class="wine-topline">
+                        <h2 class="wine-name">Pinot Noir</h2>
+                        <span class="wine-meta">2022 • elegantní styl</span>
+                    </div>
+
+                    <p class="wine-story">
+                        Jemné červené s důrazem na eleganci. Červené ovoce, náznak lesa a hladká textura.
+                        Působí uhlazeně a sofistikovaně.
+                    </p>
+
+                    <ul class="wine-notes">
+                        <li><strong>Profil:</strong> jemné, ovocné, sametové</li>
+                        <li><strong>Párování:</strong> drůbež, telecí, houby</li>
+                        <li><strong>Servis:</strong> 14–16 °C</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="wine-card" data-wine="sekt" tabindex="0" role="button" aria-label="Detail vína Sekt Brut">
+                <div class="wine-media">
+                    <img src="Images/Vína/Víno%203.png" alt="Sekt Brut">
+                </div>
+
+                <div class="wine-info">
+                    <div class="wine-topline">
+                        <h2 class="wine-name">Sekt Brut</h2>
+                        <span class="wine-meta">metoda tradiční • 24 měsíců</span>
+                    </div>
+
+                    <p class="wine-story">
+                        Suchý sekt s jemným perlením a čistou aromatikou. Přesný, osvěžující a skvěle pitelný.
+                        Ideální jako slavnostní start večera.
+                    </p>
+
+                    <ul class="wine-notes">
+                        <li><strong>Profil:</strong> suché, svěží, jemné perlení</li>
+                        <li><strong>Párování:</strong> canapés, ústřice, tvrdé sýry</li>
+                        <li><strong>Servis:</strong> 6–8 °C</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="wine-card wine-card--reverse" data-wine="sauvignon" tabindex="0" role="button" aria-label="Detail vína Sauvignon">
+                <div class="wine-media">
+                    <img src="Images/Vína/víno1.png" alt="Sauvignon 2023">
+                </div>
+
+                <div class="wine-info">
+                    <div class="wine-topline">
+                        <h2 class="wine-name">Sauvignon</h2>
+                        <span class="wine-meta">2023 • aromatické bílé</span>
+                    </div>
+
+                    <p class="wine-story">
+                        Výrazná aromatika s tóny angreštu a bylin. V chuti živé, šťavnaté a čisté,
+                        s krásně suchým zakončením.
+                    </p>
+
+                    <ul class="wine-notes">
+                        <li><strong>Profil:</strong> bylinky, angrešt, svěžest</li>
+                        <li><strong>Párování:</strong> saláty, sushi, kozí sýr</li>
+                        <li><strong>Servis:</strong> 8–10 °C</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="wine-card" data-wine="frankovka" tabindex="0" role="button" aria-label="Detail vína Frankovka">
+                <div class="wine-media">
+                    <img src="Images/Vína/Víno2.png" alt="Frankovka 2021">
+                </div>
+
+                <div class="wine-info">
+                    <div class="wine-topline">
+                        <h2 class="wine-name">Frankovka</h2>
+                        <span class="wine-meta">2021 • červené s charakterem</span>
+                    </div>
+
+                    <p class="wine-story">
+                        Strukturované červené s kořenitostí a tmavým ovocem. Působí seriózně,
+                        má pevnější tříslovinu a dlouhý dozvuk.
+                    </p>
+
+                    <ul class="wine-notes">
+                        <li><strong>Profil:</strong> tmavé ovoce, koření, struktura</li>
+                        <li><strong>Párování:</strong> gril, zvěřina, tvrdé sýry</li>
+                        <li><strong>Servis:</strong> 16–18 °C</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="wine-card wine-card--reverse" data-wine="rulandske" tabindex="0" role="button" aria-label="Detail vína Rulandské šedé">
+                <div class="wine-media">
+                    <img src="Images/Vína/Víno%203.png" alt="Rulandské šedé 2022">
+                </div>
+
+                <div class="wine-info">
+                    <div class="wine-topline">
+                        <h2 class="wine-name">Rulandské šedé</h2>
+                        <span class="wine-meta">2022 • plnější bílé</span>
+                    </div>
+
+                    <p class="wine-story">
+                        Plnější a kulatější bílé s tónem hrušky, peckovin a jemné krémovosti.
+                        Skvělé, když chceš něco hebkého, ale stále elegantního.
+                    </p>
+
+                    <ul class="wine-notes">
+                        <li><strong>Profil:</strong> hruška, krémovost, jemnost</li>
+                        <li><strong>Párování:</strong> drůbež, těstoviny, sýr</li>
+                        <li><strong>Servis:</strong> 9–11 °C</li>
+                    </ul>
+                </div>
+            </article>
+
+        </section>
+
+    </div>
+</section>
+
+<!-- ===== MODAL (POPUP DETAIL VÍNA) ===== -->
+<div class="modal" id="wineModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="true"></div>
+
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal__close" type="button" aria-label="Zavřít" data-close="true">✕</button>
+
+        <div class="modal__grid">
+            <div class="modal__media">
+                <img id="modalImage" src="" alt="">
+            </div>
+
+            <div class="modal__content">
+                <div class="modal__topline">
+                    <h2 class="modal__title" id="modalTitle"></h2>
+                    <div class="modal__meta" id="modalMeta"></div>
+                </div>
+
+                <p class="modal__story" id="modalStory"></p>
+
+                <div class="modal__section">
+                    <h3 class="modal__h3">Specifikace</h3>
+                    <ul class="modal__specs" id="modalSpecs"></ul>
+                </div>
+
+                <div class="modal__section">
+                    <h3 class="modal__h3">Chuť a párování</h3>
+                    <ul class="modal__specs" id="modalPairing"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

@@ -131,11 +131,11 @@ body {
 .hero-top {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* levý lang-switcher vlevo */
+    justify-content: flex-start;
     width: 100%;
     padding: 0.5rem 2rem;
     box-sizing: border-box;
-    position: relative; /* aby lang dropdown mohl přesahovat */
+    position: relative;
 }
 
 /* ===== LANG SWITCHER vlevo ===== */
@@ -162,9 +162,12 @@ body {
 
 /* ===== HERO NAV uprostřed ===== */
 .hero-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+
     display: flex;
     gap: 2.5rem;
     padding: 0.5rem 1rem;
@@ -174,9 +177,9 @@ body {
     border-radius: 999px;
 
     transition: background 0.3s ease, box-shadow 0.3s ease;
-
-    margin: 0 auto; /* nav uprostřed */
+    z-index: 1000;
 }
+
 
 .hero-nav a {
     color: #fff;
