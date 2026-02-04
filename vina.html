@@ -37,11 +37,12 @@
         <header class="vina-header">
             <span class="vina-eyebrow" data-key="vina_eyebrow">Kolekce</span>
 
-            <img
-                    src="Images/Alabarte-logo.webp"
-                    alt="Alabarte"
-                    class="vina-logo"
-            >
+            <div class="vina-logo">
+                <a href="index.html">
+                    <img src="Images/Alabarte-logo.webp" alt="Alabarte">
+                </a>
+            </div>
+
 
             <h1 class="vina-title" data-key="vina_title">
                 <span class="vina-title__small">Naše</span>
@@ -55,157 +56,163 @@
         <!-- ===== CONTENT ===== -->
         <div class="vina-content">
             <p data-key="vina_text">
-                Nabízíme pečlivě vybraná vína z malých vinařství s důrazem na kvalitu,
-                tradici a jedinečný charakter každé lahve.
+                Nabízíme pečlivě vybraná toskánská vína z vinařství Fattoria La Torre, dovážená do České republiky s důrazem na kvalitu, tradici a jedinečný charakter každé lahve.
             </p>
         </div>
 
         <!-- ===== VÍNA (prezentační katalog) ===== -->
         <section class="wines" id="vina-katalog">
 
-            <article class="wine-card" data-wine="ryzlink" tabindex="0" role="button" aria-label="Detail vína Ryzlink rýnský">
+            <article class="wine-card" data-wine="vermentino" tabindex="0" role="button" aria-label="Detail vína Vermentino IGT Toscana 2023 BAGIOGIE">
                 <div class="wine-media">
-                    <img src="Images/Vína/víno1.png" alt="Ryzlink rýnský 2023">
+                    <img src="Images/Vína/vermetinoigt23.png" alt="Vermentino IGT Toscana 2023 BAGIOGIE">
                 </div>
 
                 <div class="wine-info">
                     <div class="wine-topline">
-                        <h2 class="wine-name">Ryzlink rýnský</h2>
-                        <span class="wine-meta">2023 • Morava</span>
+                        <h2 class="wine-name">Vermentino IGT Bagiogie 2023</h2>
+                        <span class="wine-meta">2023 • suché bílé • Itálie</span>
                     </div>
 
                     <p class="wine-story">
-                        Elegantní a minerální výraz s čistou kyselinou. Vůně citrusů, bílých květů a jemné kořenitosti.
-                        Víno staví na svěžesti a dlouhém závěru.
+                        Svěží a minerální bílé víno z Toskánska s výraznými tóny citrusových plodů,
+                        bylin a jemnou slaností v závěru.
                     </p>
 
                     <ul class="wine-notes">
-                        <li><strong>Profil:</strong> svěží, minerální, citrus</li>
-                        <li><strong>Párování:</strong> ryby, lehké omáčky, kozí sýr</li>
+                        <li><strong>Profil:</strong> citrusy, bylinky, mineralita</li>
+                        <li><strong>Párování:</strong> ryby, mořské plody, středomořská kuchyně</li>
                         <li><strong>Servis:</strong> 8–10 °C</li>
                     </ul>
                 </div>
             </article>
 
-            <article class="wine-card wine-card--reverse" data-wine="pinot" tabindex="0" role="button" aria-label="Detail vína Pinot Noir">
-                <div class="wine-media">
-                    <img src="Images/Vína/Víno2.png" alt="Pinot Noir 2022">
+            <article class="wine-card wine-card--reverse" data-wine="chianti" tabindex="0" role="button" aria-label="Detail vína Chianti Colli Senesi DOCG 2023 La Villa">
+            <div class="wine-media">
+                    <img src="Images/Vína/chiantisenesi23.png" alt="Chianti Colli Senesi DOCG 2023 La Villa">
                 </div>
 
                 <div class="wine-info">
                     <div class="wine-topline">
-                        <h2 class="wine-name">Pinot Noir</h2>
-                        <span class="wine-meta">2022 • elegantní styl</span>
+                        <h2 class="wine-name">Chianti DOCG 2023 La Villa</h2>
+                        <span class="wine-meta">2023 • suché červené • Itálie</span>
                     </div>
 
                     <p class="wine-story">
-                        Jemné červené s důrazem na eleganci. Červené ovoce, náznak lesa a hladká textura.
-                        Působí uhlazeně a sofistikovaně.
+                        Tradiční toskánské červené víno z oblasti Colli Senesi vyrobené převážně
+                        z odrůdy Sangiovese.
                     </p>
 
                     <ul class="wine-notes">
-                        <li><strong>Profil:</strong> jemné, ovocné, sametové</li>
-                        <li><strong>Párování:</strong> drůbež, telecí, houby</li>
-                        <li><strong>Servis:</strong> 14–16 °C</li>
-                    </ul>
-                </div>
-            </article>
-
-            <article class="wine-card" data-wine="sekt" tabindex="0" role="button" aria-label="Detail vína Sekt Brut">
-                <div class="wine-media">
-                    <img src="Images/Vína/Víno%203.png" alt="Sekt Brut">
-                </div>
-
-                <div class="wine-info">
-                    <div class="wine-topline">
-                        <h2 class="wine-name">Sekt Brut</h2>
-                        <span class="wine-meta">metoda tradiční • 24 měsíců</span>
-                    </div>
-
-                    <p class="wine-story">
-                        Suchý sekt s jemným perlením a čistou aromatikou. Přesný, osvěžující a skvěle pitelný.
-                        Ideální jako slavnostní start večera.
-                    </p>
-
-                    <ul class="wine-notes">
-                        <li><strong>Profil:</strong> suché, svěží, jemné perlení</li>
-                        <li><strong>Párování:</strong> canapés, ústřice, tvrdé sýry</li>
-                        <li><strong>Servis:</strong> 6–8 °C</li>
-                    </ul>
-                </div>
-            </article>
-
-            <article class="wine-card wine-card--reverse" data-wine="sauvignon" tabindex="0" role="button" aria-label="Detail vína Sauvignon">
-                <div class="wine-media">
-                    <img src="Images/Vína/víno1.png" alt="Sauvignon 2023">
-                </div>
-
-                <div class="wine-info">
-                    <div class="wine-topline">
-                        <h2 class="wine-name">Sauvignon</h2>
-                        <span class="wine-meta">2023 • aromatické bílé</span>
-                    </div>
-
-                    <p class="wine-story">
-                        Výrazná aromatika s tóny angreštu a bylin. V chuti živé, šťavnaté a čisté,
-                        s krásně suchým zakončením.
-                    </p>
-
-                    <ul class="wine-notes">
-                        <li><strong>Profil:</strong> bylinky, angrešt, svěžest</li>
-                        <li><strong>Párování:</strong> saláty, sushi, kozí sýr</li>
-                        <li><strong>Servis:</strong> 8–10 °C</li>
-                    </ul>
-                </div>
-            </article>
-
-            <article class="wine-card" data-wine="frankovka" tabindex="0" role="button" aria-label="Detail vína Frankovka">
-                <div class="wine-media">
-                    <img src="Images/Vína/Víno2.png" alt="Frankovka 2021">
-                </div>
-
-                <div class="wine-info">
-                    <div class="wine-topline">
-                        <h2 class="wine-name">Frankovka</h2>
-                        <span class="wine-meta">2021 • červené s charakterem</span>
-                    </div>
-
-                    <p class="wine-story">
-                        Strukturované červené s kořenitostí a tmavým ovocem. Působí seriózně,
-                        má pevnější tříslovinu a dlouhý dozvuk.
-                    </p>
-
-                    <ul class="wine-notes">
-                        <li><strong>Profil:</strong> tmavé ovoce, koření, struktura</li>
-                        <li><strong>Párování:</strong> gril, zvěřina, tvrdé sýry</li>
+                        <li><strong>Profil:</strong> červené ovoce, koření, jemné třísloviny</li>
+                        <li><strong>Párování:</strong> těstoviny, uzeniny, sýry</li>
                         <li><strong>Servis:</strong> 16–18 °C</li>
                     </ul>
                 </div>
             </article>
 
-            <article class="wine-card wine-card--reverse" data-wine="rulandske" tabindex="0" role="button" aria-label="Detail vína Rulandské šedé">
+
+            <article class="wine-card" data-wine="rosato" tabindex="0" role="button" aria-label="Detail vína Rosato IGT Toscana 2023 Badalui">
                 <div class="wine-media">
-                    <img src="Images/Vína/Víno%203.png" alt="Rulandské šedé 2022">
+                    <img src="Images/Vína/rosatoigt23.png" alt="Rosato IGT Toscana 2023 Badalui">
                 </div>
 
                 <div class="wine-info">
                     <div class="wine-topline">
-                        <h2 class="wine-name">Rulandské šedé</h2>
-                        <span class="wine-meta">2022 • plnější bílé</span>
+                        <h2 class="wine-name">Rosato IGT Badalui 2023</h2>
+                        <span class="wine-meta">2023 • růžové • Itálie</span>
                     </div>
 
                     <p class="wine-story">
-                        Plnější a kulatější bílé s tónem hrušky, peckovin a jemné krémovosti.
-                        Skvělé, když chceš něco hebkého, ale stále elegantního.
+                        Svěží růžové víno z Toskánska s ovocným projevem a lehkou strukturou.
+                        Elegantní, příjemně suché a skvěle pitelné víno ideální pro teplejší dny.
                     </p>
 
                     <ul class="wine-notes">
-                        <li><strong>Profil:</strong> hruška, krémovost, jemnost</li>
-                        <li><strong>Párování:</strong> drůbež, těstoviny, sýr</li>
-                        <li><strong>Servis:</strong> 9–11 °C</li>
+                        <li><strong>Profil:</strong> červené ovoce, svěžest, lehkost</li>
+                        <li><strong>Párování:</strong> těstoviny, pizza, čerstvé sýry</li>
+                        <li><strong>Servis:</strong> 8–10 °C</li>
                     </ul>
                 </div>
             </article>
+
+
+            <article class="wine-card wine-card--reverse" data-wine="vernaccia" tabindex="0" role="button" aria-label="Detail vína Vernaccia di San Gimignano DOCG 2024">
+                <div class="wine-media">
+                    <img src="Images/Vína/vernaccia24.png" alt="Vernaccia di San Gimignano DOCG 2024">
+                </div>
+
+                <div class="wine-info">
+                    <div class="wine-topline">
+                        <h2 class="wine-name">Vernaccia DOCG 2024</h2>
+                        <span class="wine-meta">2024 • suché bílé • Itálie</span>
+                    </div>
+
+                    <p class="wine-story">
+                        Tradiční bílé víno z oblasti San Gimignano, vyznačující se svěžestí,
+                        minerálním charakterem a precizní strukturou. Elegantní víno s typickým
+                        toskánským projevem.
+                    </p>
+
+                    <ul class="wine-notes">
+                        <li><strong>Profil:</strong> citrusy, zelené jablko, mineralita</li>
+                        <li><strong>Párování:</strong> ryby, mořské plody, lehká kuchyně</li>
+                        <li><strong>Servis:</strong> 8–10 °C</li>
+                    </ul>
+                </div>
+            </article>
+
+
+            <article class="wine-card" data-wine="guinzano" tabindex="0" role="button" aria-label="Detail vína San Gimignano Rosso DOC 2022 Guinzano">
+                <div class="wine-media">
+                    <img src="Images/Vína/rossodoc22.png" alt="San Gimignano Rosso DOC 2022 Guinzano">
+                </div>
+
+                <div class="wine-info">
+                    <div class="wine-topline">
+                        <h2 class="wine-name">Rosso DOC 2022 Guinzano</h2>
+                        <span class="wine-meta">2022 • suché červené • Itálie</span>
+                    </div>
+
+                    <p class="wine-story">
+                        Elegantní červené cuvée z Toskánska, které spojuje zralé červené ovoce,
+                        jemné tóny dřeva a vyváženou strukturu. Působí středně plně, s jemnými
+                        tříslovinami a dlouhým, hladkým závěrem.
+                    </p>
+
+                    <ul class="wine-notes">
+                        <li><strong>Profil:</strong> zralé červené ovoce, jemné dřevo, struktura</li>
+                        <li><strong>Párování:</strong> maso, těstoviny, vyzrálé sýry</li>
+                        <li><strong>Servis:</strong> 16–18 °C</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="wine-card wine-card--reverse" data-wine="sciallebiancho" tabindex="0" role="button" aria-label="Detail vína Vernaccia di San Gimignano Riserva DOCG 2022 Sciallebiancho">
+                <div class="wine-media">
+                    <img src="Images/Vína/vernacciadocg22.png" alt="Vernaccia Sciallebiancho DOCG 2022">
+                </div>
+
+                <div class="wine-info">
+                    <div class="wine-topline">
+                        <h2 class="wine-name">Vernaccia Sciallebiancho DOCG 2022</h2>
+                        <span class="wine-meta">2022 • suché bílé • Itálie</span>
+                    </div>
+
+                    <p class="wine-story">
+                        Výrazné a strukturované bílé víno z Toskánska pocházející z vinic starých
+                        přibližně 30 let. Riserva Sciallebiancho nabízí komplexní aromatiku,
+                        minerální hloubku a elegantní projev s dlouhým dozvukem.
+                    </p>
+
+                    <ul class="wine-notes">
+                        <li><strong>Profil:</strong> citrusová kůra, minerální tóny, jemná krémovost</li>
+                        <li><strong>Párování:</strong> ryby, bílé maso, vyzrálé sýry</li>
+                        <li><strong>Servis:</strong> 10–12 °C</li>
+                    </ul>
+                </div>
+            </article>
+
 
         </section>
 
@@ -218,6 +225,13 @@
 
     <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <button class="modal__close" type="button" aria-label="Zavřít" data-close="true">✕</button>
+        <button class="modal__nav modal__nav--prev" type="button" aria-label="Předchozí víno">
+            ‹
+        </button>
+
+        <button class="modal__nav modal__nav--next" type="button" aria-label="Další víno">
+            ›
+        </button>
 
         <div class="modal__grid">
             <div class="modal__media">

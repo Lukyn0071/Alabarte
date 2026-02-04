@@ -261,12 +261,13 @@ body {
 }
 
 .wine-media img {
-    width: 100%;
-    max-width: 180px;
-    height: auto;
+    height: 320px;        /* 🔑 klíčové */
+    width: auto;
+    max-width: 100%;
     object-fit: contain;
     filter: drop-shadow(0 18px 24px rgba(0,0,0,0.25));
 }
+
 
 .wine-info {
     color: #111;
@@ -283,7 +284,9 @@ body {
 .wine-name {
     margin: 0;
     font-size: 1.25rem;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.03em; /* ⬅️ KLÍČ */
+    max-width: 18ch;
+    line-height: 1.25;
 }
 
 .wine-meta {
@@ -413,6 +416,97 @@ body {
     transform: translateY(12px);
     opacity: 0;
     animation: modalIn 0.25s ease forwards;
+    max-height: calc(100vh - 10vh); /* aby se vešel na malé monitory (5vh nahoře + 5vh dole) */
+    overflow: auto;                  /* scroll uvnitř popup okna */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ===== MODAL NAVIGATION (NO CIRCLE) ===== */
+.modal__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 48px;              /* klikací plocha */
+    height: 64px;             /* klikací plocha */
+    border: 0;
+    cursor: pointer;
+
+    background: transparent;  /* ✅ bez kolečka */
+    color: rgba(17, 17, 17, 0.55);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 42px;          /* velikost šipky */
+    font-weight: 300;
+    line-height: 1;
+
+    transition: color 0.18s ease, transform 0.18s ease, opacity 0.18s ease;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal__nav:hover {
+    color: rgba(17, 17, 17, 0.92);
+    opacity: 1;
+    transform: translateY(-50%) scale(1.06);
+}
+
+/* pozice – může být lehce ven, ale bez scrollu */
+.modal__nav--prev {
+    left: -18px;
+}
+
+.modal__nav--next {
+    right: -18px;
+}
+
+/* aby nevznikal horizontální scrollbar */
+.modal__panel {
+    overflow-x: hidden;
+}
+.modal.is-open .modal__nav {
+    opacity: 0.75;
+    pointer-events: auto;
+}
+.modal.is-open .modal__panel:hover .modal__nav {
+    opacity: 0.95;
+}
+
+/* ===== MODAL: ANIMACE PŘEPÍNÁNÍ OBSAHU ===== */
+.modal__grid {
+    transition: opacity 160ms ease, transform 160ms ease;
+    will-change: opacity, transform;
+}
+
+/* směr přepnutí řídíme přes class na .modal__panel */
+.modal__panel.is-switching-left .modal__grid {
+    opacity: 0;
+    transform: translateX(-18px);
+}
+
+.modal__panel.is-switching-right .modal__grid {
+    opacity: 0;
+    transform: translateX(18px);
+}
+
+/* Na mobilu schovat */
+@media (max-width: 640px) {
+    .modal__nav {
+        display: none;
+    }
+}
+
+
+
+/* Na mobilu klidně schovat */
+@media (max-width: 640px) {
+    .modal__nav {
+        display: none;
+    }
 }
 
 /* ===== ANIMACE ===== */
@@ -449,6 +543,8 @@ body {
     cursor: pointer;
     font-size: 18px;
     line-height: 38px;
+    z-index: 30;          /* 🔥 přidej */
+    pointer-events: auto; /* jistota */
 }
 
 .modal__close:hover {
@@ -490,18 +586,26 @@ body {
     justify-content: space-between;
     align-items: baseline;
     gap: 1rem;
+    padding-right: 0;
 }
 
 .modal__title {
     margin: 0;
     font-size: 1.6rem;
     letter-spacing: 0.06em;
+    min-width: 0;
+    max-width: 32ch;      /* aby to nerostlo až do křížku */
+    text-align: left;
+    white-space: normal;  /* povolí zalomení (místo přetékání) */
+    overflow-wrap: anywhere;
 }
 
 .modal__meta {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     opacity: 0.75;
     white-space: nowrap;
+    margin-right: 48px;   /* prostor pro křížek */
+    text-align: right;
 }
 
 .modal__story {
