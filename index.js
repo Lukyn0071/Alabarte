@@ -1,3 +1,4 @@
+// index.js
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ================= SLIDESHOW ================= */
@@ -33,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ================= LANGUAGE SYSTEM (NEW) ================= */
-
     const TRANSLATIONS = {
         cs: {
             hero_title: "ALABARTE",
@@ -65,14 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function setLanguage(lang) {
         const dict = TRANSLATIONS[lang];
-
         if (!dict) return;
 
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
-            if (dict[key]) {
-                el.textContent = dict[key];
-            }
+            if (dict[key]) el.textContent = dict[key];
         });
 
         document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -83,15 +80,91 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem('lang', lang);
     }
 
-    // init
     const savedLang = localStorage.getItem('lang') || 'cs';
     setLanguage(savedLang);
 
-    // buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            setLanguage(btn.dataset.lang);
-        });
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
+
+    /* ================= NEWS MODAL (ONLY ONE IMPLEMENTATION) =================
+       DŮLEŽITÉ: smaž/zakomentuj všechny ostatní bloky pro modal v souboru,
+       hlavně duplikovaný IIFE a blok s document.querySelector('.modal')...
+    */
+    (() => {
+        const modal = document.getElementById("newsModal");
+        if (!modal) return;
+
+        const imageEl = document.getElementById("newsModalImage");
+        const titleEl = document.getElementById("newsModalTitle");
+        const metaEl = document.getElementById("newsModalMeta");
+        const perexEl = document.getElementById("newsModalPerex");
+        const bodyEl = document.getElementById("newsModalBody");
+
+        const openModal = (card) => {
+            const title = card.dataset.title || "";
+            const date = card.dataset.date || "";
+            const image = card.dataset.image || "";
+            const perex = card.dataset.perex || "";
+            const body = card.dataset.body || "";
+
+            if (titleEl) titleEl.textContent = title;
+            if (metaEl) metaEl.textContent = date;
+            if (perexEl) perexEl.textContent = perex;
+
+            if (imageEl) {
+                imageEl.src = image;
+                imageEl.alt = title || "Aktualita";
+                imageEl.style.display = image ? "" : "none";
+            }
+
+            if (bodyEl) {
+                bodyEl.innerHTML = "";
+                body.split("\n\n").forEach((chunk) => {
+                    const t = chunk.trim();
+                    if (!t) return;
+                    const p = document.createElement("p");
+                    p.textContent = t;
+                    bodyEl.appendChild(p);
+                });
+            }
+
+            modal.classList.remove("is-closing");
+            modal.classList.add("is-open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-open");
+        };
+
+        const closeModal = () => {
+            if (!modal.classList.contains("is-open")) return;
+
+            modal.classList.add("is-closing");
+            window.setTimeout(() => {
+                modal.classList.remove("is-open", "is-closing");
+                modal.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("modal-open");
+            }, 250);
+        };
+
+        document.querySelectorAll(".news-item[data-news]").forEach((card) => {
+            card.addEventListener("click", () => openModal(card));
+            card.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openModal(card);
+                }
+            });
+        });
+
+        modal.addEventListener("click", (e) => {
+            const target = e.target;
+            if (!(target instanceof Element)) return;
+            if (target.matches("[data-close='true']")) closeModal();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeModal();
+        });
+    })();
 
 });
