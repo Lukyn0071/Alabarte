@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
             hero_title: "ALABARTE",
             kontakt: "Kontakt",
             vina: "Vína",
-            galerie: "Galerie",
+            aktuality: "Aktuality",
             eshop: "E-shop",
 
             text1_h2: "Vernaccia di San Gimignano",
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
             hero_title: "ALABARTE",
             kontakt: "Contact",
             vina: "Wines",
-            galerie: "Gallery",
+            aktuality: "News",
             eshop: "Shop",
 
             text1_h2: "Vernaccia di San Gimignano",
