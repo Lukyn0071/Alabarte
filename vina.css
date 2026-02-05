@@ -130,7 +130,7 @@ body {
 }
 
 .vina-title__small{
-    font-size: 1.05rem;        /* 🔼 větší */
+    font-size: 1.05rem;
     letter-spacing: 0.45em;
     text-transform: uppercase;
     opacity: 0.65;
@@ -139,7 +139,7 @@ body {
 }
 
 .vina-title__big{
-    font-size: clamp(4.2rem, 8vw, 6.2rem); /* 🔥 výrazně větší */
+    font-size: clamp(4.2rem, 8vw, 6.2rem);
     font-weight: 520;
     letter-spacing: 0.05em;
     font-family: ui-serif, "Georgia", "Times New Roman", serif;
@@ -151,8 +151,8 @@ body {
 .vina-title::after{
     content: "";
     display: block;
-    width: 140px;              /* délka čárky */
-    height: 2px;              /* tloušťka */
+    width: 140px;
+    height: 2px;
     margin: 1.2rem auto 0;
 
     background: linear-gradient(
@@ -164,12 +164,10 @@ body {
     border-radius: 2px;
 }
 
-
-
 .vina-logo {
     filter: grayscale(100%) brightness(0.55);
-    margin-bottom: 3rem; /* víc prostoru pod logem */
-    opacity: 0.6;       /* jemně stáhneme dominanci */
+    margin-bottom: 3rem;
+    opacity: 0.6;
 }
 
 /* ===== CONTENT ===== */
@@ -258,16 +256,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* ✅ důležité: aby se nic neřezalo a zoom byl vidět */
+    overflow: visible;
 }
 
 .wine-media img {
-    height: 320px;        /* 🔑 klíčové */
+    height: 320px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
+    display: block;
+
     filter: drop-shadow(0 18px 24px rgba(0,0,0,0.25));
+
+    /* ✅ plynulost */
+    transform-origin: center center;
+    will-change: transform;
 }
 
+/* ✅ HOVER EFEKT – stejný vibe jako index */
+.wine-card:hover .wine-media img {
+    animation: slowZoom 6s ease-in-out forwards;
+}
 
 .wine-info {
     color: #111;
@@ -284,7 +295,7 @@ body {
 .wine-name {
     margin: 0;
     font-size: 1.25rem;
-    letter-spacing: 0.03em; /* ⬅️ KLÍČ */
+    letter-spacing: 0.03em;
     max-width: 18ch;
     line-height: 1.25;
 }
@@ -416,8 +427,9 @@ body {
     transform: translateY(12px);
     opacity: 0;
     animation: modalIn 0.25s ease forwards;
-    max-height: calc(100vh - 10vh); /* aby se vešel na malé monitory (5vh nahoře + 5vh dole) */
-    overflow: auto;                  /* scroll uvnitř popup okna */
+
+    max-height: calc(100vh - 10vh);
+    overflow: auto;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -427,19 +439,19 @@ body {
     top: 50%;
     transform: translateY(-50%);
 
-    width: 48px;              /* klikací plocha */
-    height: 64px;             /* klikací plocha */
+    width: 48px;
+    height: 64px;
     border: 0;
     cursor: pointer;
 
-    background: transparent;  /* ✅ bez kolečka */
+    background: transparent;
     color: rgba(17, 17, 17, 0.55);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 42px;          /* velikost šipky */
+    font-size: 42px;
     font-weight: 300;
     line-height: 1;
 
@@ -455,7 +467,6 @@ body {
     transform: translateY(-50%) scale(1.06);
 }
 
-/* pozice – může být lehce ven, ale bez scrollu */
 .modal__nav--prev {
     left: -18px;
 }
@@ -482,7 +493,6 @@ body {
     will-change: opacity, transform;
 }
 
-/* směr přepnutí řídíme přes class na .modal__panel */
 .modal__panel.is-switching-left .modal__grid {
     opacity: 0;
     transform: translateX(-18px);
@@ -500,16 +510,7 @@ body {
     }
 }
 
-
-
-/* Na mobilu klidně schovat */
-@media (max-width: 640px) {
-    .modal__nav {
-        display: none;
-    }
-}
-
-/* ===== ANIMACE ===== */
+/* ===== ANIMACE (modal) ===== */
 @keyframes modalIn {
     to {
         transform: translateY(0);
@@ -543,8 +544,8 @@ body {
     cursor: pointer;
     font-size: 18px;
     line-height: 38px;
-    z-index: 30;          /* 🔥 přidej */
-    pointer-events: auto; /* jistota */
+    z-index: 30;
+    pointer-events: auto;
 }
 
 .modal__close:hover {
@@ -594,9 +595,9 @@ body {
     font-size: 1.6rem;
     letter-spacing: 0.06em;
     min-width: 0;
-    max-width: 32ch;      /* aby to nerostlo až do křížku */
+    max-width: 32ch;
     text-align: left;
-    white-space: normal;  /* povolí zalomení (místo přetékání) */
+    white-space: normal;
     overflow-wrap: anywhere;
 }
 
@@ -604,7 +605,7 @@ body {
     font-size: 0.8rem;
     opacity: 0.75;
     white-space: nowrap;
-    margin-right: 48px;   /* prostor pro křížek */
+    margin-right: 48px;
     text-align: right;
 }
 
@@ -657,4 +658,10 @@ body.modal-open {
     .modal__panel {
         margin: 3vh auto;
     }
+}
+
+/* ===== ANIMACE (hover lahve) ===== */
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to   { transform: scale(1.12); } /* ✅ o trochu výraznější, aby to bylo vidět */
 }
