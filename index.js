@@ -1,4 +1,3 @@
-// index.js
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ================= SLIDESHOW ================= */
@@ -33,7 +32,29 @@ document.addEventListener("DOMContentLoaded", () => {
         nav.classList.toggle('scrolled', window.scrollY > 40);
     });
 
-    /* ================= LANGUAGE SYSTEM (NEW) ================= */
+    /* ================= SCROLL CROSSFADE (hero background) ================= */
+    const heroBg = document.querySelector(".hero-bg");
+
+    function clamp01(v) {
+        return Math.max(0, Math.min(1, v));
+    }
+
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+        if (ticking) return;
+        ticking = true;
+
+        requestAnimationFrame(() => {
+            const range = 520; // kolik px scrollu = plné prolnutí
+            const t = clamp01(window.scrollY / range);
+
+            if (heroBg) heroBg.style.setProperty("--blend", t);
+
+            ticking = false;
+        });
+    });
+
+    /* ================= LANGUAGE SYSTEM ================= */
     const TRANSLATIONS = {
         cs: {
             hero_title: "ALABARTE",
@@ -41,25 +62,56 @@ document.addEventListener("DOMContentLoaded", () => {
             vina: "Vína",
             galerie: "Galerie",
             eshop: "E-shop",
-            text1_h2: "První text",
-            text1_p: "Synchronizovaný s prvním obrázkem",
-            text2_h2: "Druhý text",
-            text2_p: "Synchronizovaný s druhým obrázkem",
-            text3_h2: "Třetí text",
-            text3_p: "Synchronizovaný s třetím obrázkem"
+
+            text1_h2: "Vernaccia di San Gimignano",
+            text1_p: "Svěží bílé víno s minerálním charakterem, jemnými citrusovými tóny a typickou elegancí toskánské krajiny.",
+
+            text2_h2: "Rosso Toscana",
+            text2_p: "Vyvážené červené víno s tóny zralého ovoce a jemného koření, které spojuje tradici Toskánska s moderním projevem.",
+
+            text3_h2: "Sangiovese z Toskánska",
+            text3_p: "Charakteristické červené víno s jemnými tříslovinami, ovocným profilem a dlouhým, harmonickým závěrem.",
+
+            about_eyebrow: "O nás",
+            about_title: "Alabarte – Toskánsko v každé lahvi",
+            about_p1: "Jsme česká firma, která dováží pečlivě vybraná vína z Toskánska do České republiky. Zaměřujeme se na charakter, čistotu a příběh každé lahve – od vinice až po váš stůl.",
+            about_p2: "Spolupracujeme s vinařstvím Fattoria La Torre a přinášíme vína, která vynikají elegancí, typickým projevem regionu a poctivou prací ve vinici.",
+
+            winery_eyebrow: "Vinařství",
+            winery_title: "Fattoria La Torre",
+            winery_p1: "Rodinné vinařství v srdci Toskánska, kde se potkává tradice s moderním přístupem. Důraz je kladen na práci ve vinici, šetrné zpracování a styl vín, který je věrný místu původu.",
+            winery_li1: "Typický projev Toskánska a odrůd jako Sangiovese či Vernaccia",
+            winery_li2: "Důraz na čistotu, eleganci a vyváženost",
+            winery_li3: "Vína vhodná k jídlu i k samostatnému vychutnání"
         },
+
         en: {
             hero_title: "ALABARTE",
             kontakt: "Contact",
             vina: "Wines",
             galerie: "Gallery",
             eshop: "Shop",
-            text1_h2: "First text",
-            text1_p: "Synchronized with first image",
-            text2_h2: "Second text",
-            text2_p: "Synchronized with second image",
-            text3_h2: "Third text",
-            text3_p: "Synchronized with third image"
+
+            text1_h2: "Vernaccia di San Gimignano",
+            text1_p: "Fresh white wine with a mineral character, gentle citrus notes, and the signature elegance of Tuscany.",
+
+            text2_h2: "Rosso Toscana",
+            text2_p: "Balanced red wine with ripe fruit and subtle spice, blending Tuscan tradition with a modern expression.",
+
+            text3_h2: "Sangiovese from Tuscany",
+            text3_p: "A distinctive red with smooth tannins, a fruity profile, and a long, harmonious finish.",
+
+            about_eyebrow: "About",
+            about_title: "Alabarte – Tuscany in every bottle",
+            about_p1: "We are a Czech company bringing carefully selected Tuscan wines to the Czech Republic. We focus on character, purity, and the story behind each bottle—from vineyard to table.",
+            about_p2: "We work with Fattoria La Torre, offering wines defined by elegance, a true sense of place, and honest vineyard craft.",
+
+            winery_eyebrow: "Winery",
+            winery_title: "Fattoria La Torre",
+            winery_p1: "A family winery in the heart of Tuscany where tradition meets a modern approach. The focus is on vineyard work, gentle processing, and a style that stays true to its origin.",
+            winery_li1: "A true Tuscan expression of varieties like Sangiovese and Vernaccia",
+            winery_li2: "Focus on purity, elegance, and balance",
+            winery_li3: "Wines made for food and for pure enjoyment"
         }
     };
 
@@ -69,7 +121,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
-            if (dict[key]) el.textContent = dict[key];
+            if (dict[key]) {
+                el.textContent = dict[key];
+            }
         });
 
         document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -80,91 +134,19 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem('lang', lang);
     }
 
+    // init jazyk
     const savedLang = localStorage.getItem('lang') || 'cs';
     setLanguage(savedLang);
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        btn.addEventListener('click', () => {
+            setLanguage(btn.dataset.lang);
+        });
     });
 
-    /* ================= NEWS MODAL (ONLY ONE IMPLEMENTATION) =================
-       DŮLEŽITÉ: smaž/zakomentuj všechny ostatní bloky pro modal v souboru,
-       hlavně duplikovaný IIFE a blok s document.querySelector('.modal')...
-    */
-    (() => {
-        const modal = document.getElementById("newsModal");
-        if (!modal) return;
-
-        const imageEl = document.getElementById("newsModalImage");
-        const titleEl = document.getElementById("newsModalTitle");
-        const metaEl = document.getElementById("newsModalMeta");
-        const perexEl = document.getElementById("newsModalPerex");
-        const bodyEl = document.getElementById("newsModalBody");
-
-        const openModal = (card) => {
-            const title = card.dataset.title || "";
-            const date = card.dataset.date || "";
-            const image = card.dataset.image || "";
-            const perex = card.dataset.perex || "";
-            const body = card.dataset.body || "";
-
-            if (titleEl) titleEl.textContent = title;
-            if (metaEl) metaEl.textContent = date;
-            if (perexEl) perexEl.textContent = perex;
-
-            if (imageEl) {
-                imageEl.src = image;
-                imageEl.alt = title || "Aktualita";
-                imageEl.style.display = image ? "" : "none";
-            }
-
-            if (bodyEl) {
-                bodyEl.innerHTML = "";
-                body.split("\n\n").forEach((chunk) => {
-                    const t = chunk.trim();
-                    if (!t) return;
-                    const p = document.createElement("p");
-                    p.textContent = t;
-                    bodyEl.appendChild(p);
-                });
-            }
-
-            modal.classList.remove("is-closing");
-            modal.classList.add("is-open");
-            modal.setAttribute("aria-hidden", "false");
-            document.body.classList.add("modal-open");
-        };
-
-        const closeModal = () => {
-            if (!modal.classList.contains("is-open")) return;
-
-            modal.classList.add("is-closing");
-            window.setTimeout(() => {
-                modal.classList.remove("is-open", "is-closing");
-                modal.setAttribute("aria-hidden", "true");
-                document.body.classList.remove("modal-open");
-            }, 250);
-        };
-
-        document.querySelectorAll(".news-item[data-news]").forEach((card) => {
-            card.addEventListener("click", () => openModal(card));
-            card.addEventListener("keydown", (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    openModal(card);
-                }
-            });
-        });
-
-        modal.addEventListener("click", (e) => {
-            const target = e.target;
-            if (!(target instanceof Element)) return;
-            if (target.matches("[data-close='true']")) closeModal();
-        });
-
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") closeModal();
-        });
-    })();
+    /* ===== NÁJEZD SEKCE "O NÁS" ===== */
+    window.addEventListener("load", () => {
+        document.querySelector("#o-nas .js-reveal")?.classList.add("is-visible");
+    });
 
 });

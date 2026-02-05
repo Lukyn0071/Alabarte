@@ -70,6 +70,7 @@ body {
     inset: 0;
 
     /* sem dej “spodní” obrázek pozadí */
+    background-image: url("Images/Obrázek1.png"); /* <- změň na svůj spodní bg */
     background-size: cover;
     background-position: center;
 
@@ -344,7 +345,7 @@ body {
     box-sizing: border-box;
 
     /* ✅ background za bílým boxem */
-
+    background-image: url("Images/Obrázek1.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -358,7 +359,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(30, 30, 30, 0);
+    background: rgba(255, 255, 255, 0.65);
     pointer-events: none;
     z-index: 0;
 }
@@ -399,17 +400,13 @@ body {
     position: relative;
     display: grid;
     grid-template-columns: 1.1fr 1fr;
-    gap: 0rem;
+    gap: 3rem;
+    padding: 4rem 4.5rem;
+    align-items: stretch;
 
     overflow: hidden;
     border-radius: 18px;
     filter: drop-shadow(0 20px 36px rgba(0,0,0,0.22));
-
-    max-width: 1100px;   /* ← KLÍČ */
-    margin: 0 auto;     /* ← centrování */
-
-    padding: 3.5rem 3.5rem; /* menší + vyváženější */
-    align-items: center;
 }
 
 /* PRŮHLEDNÉ POZADÍ (jen asset) */
@@ -447,7 +444,7 @@ body {
     background: transparent;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .info-media img {
@@ -464,6 +461,7 @@ body {
 .info-text {
     color: #242424;
 }
+
 .info-eyebrow {
     display: inline-block;
     font-size: 0.75rem;
@@ -534,22 +532,6 @@ body {
     .info-media img {
         max-height: 320px;
     }
-}
-/* ===== FATTORIA – posun obsahu víc do středu (dynamicky) ===== */
-#fattoria .info-inner {
-    /* mírně vyváží sloupce + větší mezera mezi nimi */
-    grid-template-columns: 1fr 1fr;
-    column-gap: clamp(2rem, 4vw, 4.5rem);
-}
-
-/* textový blok posuň doprava – dynamicky podle šířky okna */
-#fattoria .info-text {
-    padding-left: clamp(1.5rem, 4vw, 4.5rem);
-}
-
-/* a obrázek lehce doleva (aby byly oba prvky víc uprostřed jako celek) */
-#fattoria .info-media {
-    transform: translateX(clamp(-1.5rem, -2vw, -0.5rem));
 }
 
 @media (max-width: 768px) {
