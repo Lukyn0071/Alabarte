@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         vermentino: {
             title: "Vermentino IGT Toscana 2023 BAGIOGIE",
             meta: "Suché bílé víno • Itálie • Toskánsko",
-            image: "Images/Vína/vermetinoigt23.png",
+            image: "Images/Vina/vermetinoigt23.png",
             story:
                 "Svěží, minerální a chuťově výrazné bílé víno z Toskánska vyrobené z odrůdy Vermentino. " +
                 "Ve vůni i chuti dominují tóny citrusových plodů, především citronu a limetky, " +
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         chianti: {
             title: "Chianti Colli Senesi DOCG 2023 La Villa",
             meta: "Suché červené víno • Itálie • Toskánsko",
-            image: "Images/Vína/chiantisenesi23.png",
+            image: "Images/Vina/chiantisenesi23.png",
             story:
                 "Klasické červené víno Chianti z oblasti Colli Senesi pocházející z vinařství Fattoria La Torre. " +
                 "Vyrobené převážně z odrůdy Sangiovese z mladších vinic přibližně 15 let starých. " +
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         rosato: {
             title: "Rosato IGT Toscana 2023 Badalui",
             meta: "Růžové víno • Itálie • Toskánsko",
-            image: "Images/Vína/rosatoigt23.png",
+            image: "Images/Vina/rosatoigt23.png",
             story:
                 "Svěží růžové víno z oblasti Toskánska vyrobené z odrůdy Sangiovese z mladých vinic. " +
                 "V chuti dominují tóny červeného ovoce, lehká kyselina a suchý, čistý závěr. " +
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         vernaccia: {
             title: "Vernaccia di San Gimignano DOCG 2024",
             meta: "Suché bílé víno • Itálie • Toskánsko",
-            image: "Images/Vína/vernaccia24.png",
+            image: "Images/Vina/vernaccia24.png",
             story:
                 "Klasické bílé víno z oblasti San Gimignano vyráběné z odrůdy Vernaccia. " +
                 "Hrozny jsou jemně lisovány a víno zraje na jemných kalech, což mu dodává čistotu, " +
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
         guinzano: {
             title: "San Gimignano Rosso DOC 2022 GUINZANO",
             meta: "Suché červené víno • Itálie • Toskánsko",
-            image: "Images/Vína/rossodoc22.png",
+            image: "Images/Vina/rossodoc22.png",
             story:
                 "Víno vzniká z odrůd Sangiovese, Merlot a Cabernet Sauvignon, které se vinifikují samostatně " +
                 "a poté se scelí do výsledného cuvée. Následuje zrání v dubových sudech a další ležení v lahvi, " +
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sciallebiancho: {
             title: "Vernaccia di San Gimignano Riserva DOCG 2022 Sciallebiancho",
             meta: "Suché bílé víno • Itálie • Toskánsko",
-            image: "Images/Vína/vernacciadocg22.png",
+            image: "Images/Vina/vernacciadocg22.png",
             story:
                 "Prémiová Vernaccia di San Gimignano Riserva z vinařství Fattoria La Torre. " +
                 "Hrozny pocházejí ze starých vinic přibližně 30 letých. Víno zraje na jemných kalech, " +

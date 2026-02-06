@@ -16,7 +16,7 @@ body{
 .hero{
     flex:1;
     min-height:100vh;
-    background-image:url("Images/Obrázek1.png");
+    background-image:url("Images/Obrazek1.png");
     background-size:cover;
     background-position:center;
     position:relative;

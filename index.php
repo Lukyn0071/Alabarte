@@ -53,15 +53,15 @@
                 <!-- IMAGES (klik -> https://www.alabarte.cz/vino/) -->
                 <a href="https://www.alabarte.cz/vino/" class="slideshow image-stage hero-wine-link" aria-label="Zobrazit vína">
                     <div class="image-slide active">
-                        <img src="Images/Vína/víno1.png" alt="">
+                        <img src="Images/Vina/vino1.png" alt="">
                     </div>
 
                     <div class="image-slide next">
-                        <img src="Images/Vína/Víno2.png" alt="">
+                        <img src="Images/Vina/Vino2.png" alt="">
                     </div>
 
                     <div class="image-slide prev">
-                        <img src="Images/Vína/Víno%203.png" alt="">
+                        <img src="Images/Vina/Vino3.png" alt="">
                     </div>
                 </a>
 

@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cs: {
             hero_title: "ALABARTE",
             kontakt: "Kontakt",
-            vina: "Vína",
+            vina: "Vina",
             aktuality: "Aktuality",
             eshop: "E-shop",
 
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             winery_p1: "Rodinné vinařství v srdci Toskánska, kde se potkává tradice s moderním přístupem. Důraz je kladen na práci ve vinici, šetrné zpracování a styl vín, který je věrný místu původu.",
             winery_li1: "Typický projev Toskánska a odrůd jako Sangiovese či Vernaccia",
             winery_li2: "Důraz na čistotu, eleganci a vyváženost",
-            winery_li3: "Vína vhodná k jídlu i k samostatnému vychutnání"
+            winery_li3: "Vina vhodná k jídlu i k samostatnému vychutnání"
         },
 
         en: {

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const TRANSLATIONS = {
         cs: {
             home: "Domů",
-            vina: "Vína",
+            vina: "Vina",
             aktuality: "Aktuality",
             eshop: "E-shop",
             aktuality_eyebrow: "Novinky",
