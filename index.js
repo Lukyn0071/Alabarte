@@ -6,82 +6,24 @@ document.addEventListener("DOMContentLoaded", () => {
     let index = 0;
     const total = images.length;
 
-    function setCtaFromSlide(slide) {
-        const cta = document.querySelector('.hero-cta--textstage');
-        if (!cta || !slide) return;
-
-        const primaryHref = slide.getAttribute('data-cta-primary-href') || 'vina.html';
-        const ghostHref = slide.getAttribute('data-cta-ghost-href') || 'https://www.alabarte.cz/vino/';
-
-        const primaryBtn = cta.querySelector('.cta-btn--primary');
-        const ghostBtn = cta.querySelector('.cta-btn--ghost');
-
-        if (primaryBtn) primaryBtn.setAttribute('href', primaryHref);
-        if (ghostBtn) {
-            ghostBtn.setAttribute('href', ghostHref);
-            const isExternal = /^https?:\/\//i.test(ghostHref);
-            if (isExternal) {
-                ghostBtn.setAttribute('target', '_blank');
-                ghostBtn.setAttribute('rel', 'noopener');
-            } else {
-                ghostBtn.removeAttribute('target');
-                ghostBtn.removeAttribute('rel');
-            }
-        }
-    }
-
-    function updateSlides(nextIndex = index) {
-        // --- images ---
+    function updateSlides() {
         images.forEach((img, i) => {
             img.className = 'image-slide';
-            if (i === nextIndex) img.classList.add('active');
-            else if (i === (nextIndex + 1) % total) img.classList.add('next');
-            else if (i === (nextIndex - 1 + total) % total) img.classList.add('prev');
+            if (i === index) img.classList.add('active');
+            else if (i === (index + 1) % total) img.classList.add('next');
+            else if (i === (index - 1 + total) % total) img.classList.add('prev');
         });
 
-        const prevIndex = index;
-        const prev = texts[prevIndex];
-        const next = texts[nextIndex];
-
-        if (prev) {
-            prev.classList.remove('active');
-            prev.classList.add('out');
-        }
-
-        if (next) {
-            next.classList.remove('out');
-            next.classList.remove('active');
-            next.offsetHeight;
-            requestAnimationFrame(() => {
-                next.classList.add('active');
-                setCtaFromSlide(next);
-            });
-        }
-
-        texts.forEach((t, i) => {
-            if (i !== prevIndex && i !== nextIndex) {
-                t.classList.remove('active');
-                t.classList.remove('out');
-            }
+        texts.forEach((txt, i) => {
+            txt.className = 'text-slide';
+            if (i === index) txt.classList.add('active');
+            else txt.classList.add('out');
         });
-
-        index = nextIndex;
     }
-
-    // Set initial state (no outgoing)
-    texts.forEach((t) => {
-        t.classList.remove('active');
-        t.classList.remove('out');
-    });
-    if (texts[0]) {
-        texts[0].classList.add('active');
-        setCtaFromSlide(texts[0]);
-    }
-    index = 0;
 
     setInterval(() => {
-        const nextIndex = (index + 1) % total;
-        updateSlides(nextIndex);
+        index = (index + 1) % total;
+        updateSlides();
     }, 3000);
 
     /* ================= STICKY NAV ================= */
@@ -117,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cs: {
             hero_title: "ALABARTE",
             kontakt: "Kontakt",
-            vina: "Vina",
+            vina: "Vína",
             aktuality: "Aktuality",
             eshop: "E-shop",
 
@@ -140,7 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
             winery_p1: "Rodinné vinařství v srdci Toskánska, kde se potkává tradice s moderním přístupem. Důraz je kladen na práci ve vinici, šetrné zpracování a styl vín, který je věrný místu původu.",
             winery_li1: "Typický projev Toskánska a odrůd jako Sangiovese či Vernaccia",
             winery_li2: "Důraz na čistotu, eleganci a vyváženost",
-            winery_li3: "Vina vhodná k jídlu i k samostatnému vychutnání"
+            winery_li3: "Vína vhodná k jídlu i k samostatnému vychutnání",
+            winery_p2: "Hrozny se sbírají ve správný okamžik a zpracovávají šetrně, aby v lahvi zůstala čistota, elegance a opravdový „sense of place“. Výsledkem jsou vína, která skvěle fungují u stolu — od svěžích bílých po strukturovaná červená.",
         },
 
         en: {
@@ -169,7 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
             winery_p1: "A family winery in the heart of Tuscany where tradition meets a modern approach. The focus is on vineyard work, gentle processing, and a style that stays true to its origin.",
             winery_li1: "A true Tuscan expression of varieties like Sangiovese and Vernaccia",
             winery_li2: "Focus on purity, elegance, and balance",
-            winery_li3: "Wines made for food and for pure enjoyment"
+            winery_li3: "Wines made for food and for pure enjoyment",
+            winery_p2: "Grapes are picked at the right moment and handled gently to preserve purity, elegance, and a true sense of place. The result is food-friendly wines—from vibrant whites to structured reds.",
         }
     };
 
@@ -177,18 +121,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const dict = TRANSLATIONS[lang];
         if (!dict) return;
 
-        const dynamic = (window.DYNAMIC_TRANSLATIONS && window.DYNAMIC_TRANSLATIONS[lang]) ? window.DYNAMIC_TRANSLATIONS[lang] : {};
-
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
-            if (!key) return;
-
-            if (Object.prototype.hasOwnProperty.call(dynamic, key)) {
-                el.textContent = dynamic[key];
-                return;
-            }
-
-            if (Object.prototype.hasOwnProperty.call(dict, key)) {
+            if (dict[key]) {
                 el.textContent = dict[key];
             }
         });
@@ -210,10 +145,47 @@ document.addEventListener("DOMContentLoaded", () => {
             setLanguage(btn.dataset.lang);
         });
     });
+    /* ================= REVEAL (O NÁS) ================= */
+    const revealEls = document.querySelectorAll(".js-reveal");
 
-    /* ===== NÁJEZD SEKCE "O NÁS" ===== */
-    window.addEventListener("load", () => {
-        document.querySelector("#o-nas .js-reveal")?.classList.add("is-visible");
-    });
+    if (revealEls.length) {
+        const io = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
 
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target); // spustí se jen jednou
+                });
+            },
+            {
+                threshold: 0.25,          // kolik prvku musí být vidět
+                rootMargin: "0px 0px -10% 0px" // spustí o chlup dřív než dojede úplně dolů
+            }
+        );
+
+        revealEls.forEach((el) => io.observe(el));
+
+        /* ================= REVEAL (VINAŘSTVÍ) – odděleně ================= */
+        const wineryRevealEls = document.querySelectorAll(".js-reveal-winery");
+
+        if (wineryRevealEls.length) {
+            const ioWinery = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+
+                        entry.target.classList.add("is-visible-winery");
+                        observer.unobserve(entry.target);
+                    });
+                },
+                {
+                    threshold: 0.25,
+                    rootMargin: "0px 0px -10% 0px"
+                }
+            );
+
+            wineryRevealEls.forEach((el) => ioWinery.observe(el));
+        }
+    }
 });
