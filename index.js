@@ -6,24 +6,82 @@ document.addEventListener("DOMContentLoaded", () => {
     let index = 0;
     const total = images.length;
 
-    function updateSlides() {
-        images.forEach((img, i) => {
-            img.className = 'image-slide';
-            if (i === index) img.classList.add('active');
-            else if (i === (index + 1) % total) img.classList.add('next');
-            else if (i === (index - 1 + total) % total) img.classList.add('prev');
-        });
+    function setCtaFromSlide(slide) {
+        const cta = document.querySelector('.hero-cta--textstage');
+        if (!cta || !slide) return;
 
-        texts.forEach((txt, i) => {
-            txt.className = 'text-slide';
-            if (i === index) txt.classList.add('active');
-            else txt.classList.add('out');
-        });
+        const primaryHref = slide.getAttribute('data-cta-primary-href') || 'vina.html';
+        const ghostHref = slide.getAttribute('data-cta-ghost-href') || 'https://www.alabarte.cz/vino/';
+
+        const primaryBtn = cta.querySelector('.cta-btn--primary');
+        const ghostBtn = cta.querySelector('.cta-btn--ghost');
+
+        if (primaryBtn) primaryBtn.setAttribute('href', primaryHref);
+        if (ghostBtn) {
+            ghostBtn.setAttribute('href', ghostHref);
+            const isExternal = /^https?:\/\//i.test(ghostHref);
+            if (isExternal) {
+                ghostBtn.setAttribute('target', '_blank');
+                ghostBtn.setAttribute('rel', 'noopener');
+            } else {
+                ghostBtn.removeAttribute('target');
+                ghostBtn.removeAttribute('rel');
+            }
+        }
     }
 
+    function updateSlides(nextIndex = index) {
+        // --- images ---
+        images.forEach((img, i) => {
+            img.className = 'image-slide';
+            if (i === nextIndex) img.classList.add('active');
+            else if (i === (nextIndex + 1) % total) img.classList.add('next');
+            else if (i === (nextIndex - 1 + total) % total) img.classList.add('prev');
+        });
+
+        const prevIndex = index;
+        const prev = texts[prevIndex];
+        const next = texts[nextIndex];
+
+        if (prev) {
+            prev.classList.remove('active');
+            prev.classList.add('out');
+        }
+
+        if (next) {
+            next.classList.remove('out');
+            next.classList.remove('active');
+            next.offsetHeight;
+            requestAnimationFrame(() => {
+                next.classList.add('active');
+                setCtaFromSlide(next);
+            });
+        }
+
+        texts.forEach((t, i) => {
+            if (i !== prevIndex && i !== nextIndex) {
+                t.classList.remove('active');
+                t.classList.remove('out');
+            }
+        });
+
+        index = nextIndex;
+    }
+
+    // Set initial state (no outgoing)
+    texts.forEach((t) => {
+        t.classList.remove('active');
+        t.classList.remove('out');
+    });
+    if (texts[0]) {
+        texts[0].classList.add('active');
+        setCtaFromSlide(texts[0]);
+    }
+    index = 0;
+
     setInterval(() => {
-        index = (index + 1) % total;
-        updateSlides();
+        const nextIndex = (index + 1) % total;
+        updateSlides(nextIndex);
     }, 3000);
 
     /* ================= STICKY NAV ================= */
@@ -119,9 +177,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const dict = TRANSLATIONS[lang];
         if (!dict) return;
 
+        const dynamic = (window.DYNAMIC_TRANSLATIONS && window.DYNAMIC_TRANSLATIONS[lang]) ? window.DYNAMIC_TRANSLATIONS[lang] : {};
+
         document.querySelectorAll('[data-key]').forEach(el => {
             const key = el.getAttribute('data-key');
-            if (dict[key]) {
+            if (!key) return;
+
+            if (Object.prototype.hasOwnProperty.call(dynamic, key)) {
+                el.textContent = dynamic[key];
+                return;
+            }
+
+            if (Object.prototype.hasOwnProperty.call(dict, key)) {
                 el.textContent = dict[key];
             }
         });
