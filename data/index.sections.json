@@ -1,0 +1,40 @@
+{
+    "sections": [
+        {
+            "id": "o-nas",
+            "class": "info-section",
+            "title": {
+                "cs": "Alabarte – Toskánsko v každé lahvi",
+                "en": "Alabarte – Tuscany in every bottle"
+            },
+            "p1": {
+                "cs": "Jsme česká firma, která dováží pečlivě vybraná vína z Toskánska do České republiky. Zaměřujeme se na charakter, čistotu a příběh každé lahve – od vinice až po váš stůl.",
+                "en": "We are a Czech company bringing carefully selected Tuscan wines to the Czech Republic. We focus on character, purity, and the story behind each bottle—from vineyard to table."
+            },
+            "p2": {
+                "cs": "Spolupracujeme s vinařstvím Fattoria La Torre a přinášíme vína, která vynikají elegancí, typickým projevem regionu a poctivou prací ve vinici.",
+                "en": "We work with Fattoria La Torre, offering wines defined by elegance, a true sense of place, and honest vineyard craft."
+            },
+            "img_alt": "Alabarte – dovoz toskánských vín",
+            "img_src": "Images/uploads/o-nas-20260208-030158-f1a97c.png"
+        },
+        {
+            "id": "fattoria",
+            "class": "info-section",
+            "title": {
+                "cs": "Fattoria La Torre",
+                "en": "Fattoria La Torre"
+            },
+            "p1": {
+                "cs": "Rodinné vinařství v srdci Toskánska, kde se potkává tradice s moderním přístupem. Důraz je kladen na práci ve vinici, šetrné zpracování a styl vín, který je věrný místu původu.",
+                "en": "A family winery in the heart of Tuscany where tradition meets a modern approach. The focus is on vineyard work, gentle processing, and a style that stays true to its origin."
+            },
+            "p2": {
+                "cs": "",
+                "en": ""
+            },
+            "img_alt": "Fattoria La Torre – vinařství v Toskánsku",
+            "img_src": "Images/uploads/fattoria-20260208-030400-17a8df.jpg"
+        }
+    ]
+}
